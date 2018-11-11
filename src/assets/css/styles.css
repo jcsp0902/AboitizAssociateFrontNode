@@ -175,6 +175,7 @@
     font-size: 20px; }
 
 .application-section {
+  text-align: center;
   margin-top: 25px; }
   .application-section .mybid-section {
     display: none; }

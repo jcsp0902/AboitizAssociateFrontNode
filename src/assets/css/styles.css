@@ -108,6 +108,9 @@
     font-size: 24px;
     font-weight: bolder; }
 
+.modal-amount .bidding-input-change {
+  border-radius: 10px; }
+
 .dashboard-section .ant-layout {
   height: 100vh;
   text-align: center;
@@ -410,8 +413,10 @@
       color: #fff; }
     .package-card .package-header .rank {
       float: left;
+      font-size: 17px;
       padding: 4px 10px; }
     .package-card .package-header .bidding {
+      font-weight: bolder;
       border-radius: inherit;
       background-color: red;
       border-bottom: 1px solid #857373;

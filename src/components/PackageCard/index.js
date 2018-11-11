@@ -5,13 +5,15 @@ import isEqual from 'lodash/isEqual'
 import Button from 'antd/lib/button';
 
 const propTypes = {
-  handleSave: PropTypes.func,
-  handleCancel: PropTypes.func,
+  onSave: PropTypes.func,
+  onCancel: PropTypes.func,
+  onEdit: PropTypes.func,
 }
 
 const defaultProps = {
-  handleSave: () => {},
-  handleCancel: () => {},
+  onSave: () => {},
+  onCancel: () => {},
+  onEdit: () => {},
 }
 
 
@@ -63,10 +65,11 @@ class PackageCard extends Component {
   }
 
   handleEdit = () => {
+    const id = this.state.dataSource.applicationId;
     this.setState({
       status: 1,
     })
-    this.props.history.push("/service-application")
+    this.props.onEdit(id)
   }
 
   handleCancelSave = () => {
@@ -190,7 +193,6 @@ class PackageCard extends Component {
             </div>
           </span>
         </div> 
-        }
         {/* {this.props.dataSource.status === 'Bidding' && 
           <div className="bidding-section">
             Bidders Rank:

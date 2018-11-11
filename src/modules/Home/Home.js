@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { dataSource , packages } from './dataSource';
 import isEqual from 'lodash/isEqual';
 import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
+import Modal from 'antd/lib/modal';
 import PackageCard from '../../components/PackageCard';
 
 
 class Home extends Component {
   state = {
     dataSource: [],
+    isShowModal: false,
+    amount: "",
   }
 
   componentDidMount() {
@@ -38,7 +42,51 @@ class Home extends Component {
   }
 
   handleSave = id => {
-    this.props.history.push("/service-application")    
+    this.setState({
+      isShowModal: true,
+      activeId: id,
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      isShowModal: false,
+    })
+  }
+
+  handleCancel = () => {
+    this.setState({
+      isShowModal: false,
+      activeId: "",
+    })
+  }
+
+  handleChangeAmount = e => {
+    const value = e.target.value || 0;
+    this.setState({
+      amount: value,
+    })
+  }
+
+  handleOk = () => {
+    const datas = this.state.dataSource;
+    const newDatas = datas.map(data => {
+      if(data.applicationId === this.state.activeId) {
+        if (this.state.amount < data.leastBid) {
+          data.leastBid = this.state.amount;
+          data.myRank = "1st";
+        }
+        data.myBid = this.state.amount;
+      }
+      return data;
+    })
+
+    this.setState({
+      dataSource: newDatas,
+      isShowModal: false,
+      activeId: "",
+      amount: "",
+    })
   }
 
   handleCancel = id => {
@@ -55,10 +103,22 @@ class Home extends Component {
     return (
       <section className="home-section">
       <div className="title-home">Applications</div>
-        {dataSource.map(data => 
-          <PackageCard dataSource={data} onSave={this.handleSave} onCancel={this.handleCancel} />
+        {this.state.dataSource.map(data => 
+          <PackageCard dataSource={data} onEdit={this.handleSave} onCancel={this.handleCancel} />
         )}
+        <Fragment>
+        <Modal
+        className="modal-amount"
+        title="Place Bidding Price"
+        visible={this.state.isShowModal}
+        onOk={this.handleOk}
+        onCancel={this.handleClose}
+        >
+        <Input className="bidding-input-change" onChange={this.handleChangeAmount} value={this.state.amount} />
+        </Modal>
+      </Fragment>
       </section>
+    
     )
   }
 }

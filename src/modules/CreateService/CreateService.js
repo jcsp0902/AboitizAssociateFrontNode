@@ -7,6 +7,7 @@ import Icon from 'antd/lib/icon';
 import Input from 'antd/lib/input';
 import Tabs from 'antd/lib/tabs';
 import notification from 'antd/lib/notification';
+import isEqual from 'lodash/isEqual';
 // import PackageCard from './component/packageCard';
 import PackageCard from '../../components/PackageCard';
 import { dataSource, dataSourceAddress } from './dataSource';
@@ -55,6 +56,22 @@ class CreateService extends Component {
   hidePlus = () => {
     this.setState({createNew: true})
   }
+
+  handleAccomplished = id => {
+      const datas = this.state.datas;
+      const newDatas = datas.map(item => {
+          if(item.applicationId === id){
+              item.status = "Accomplished"
+          }
+          return item;
+        })
+        console.log('newDatas: ', newDatas)
+    this.setState({
+        datas: newDatas,
+    })
+
+  }
+
   stateSave = () => {
       const data = [{
           packageName: document.getElementById("name").value,
@@ -87,7 +104,7 @@ class CreateService extends Component {
                     
                     {this.state.datas.map(item => (
                         <div className={`card ${item.packageName}`}>
-                        <PackageCard dataSource={item}/>
+                        <PackageCard dataSource={item} onEdit={this.handleAccomplished}/>
                         </div>
                     ))}
                 

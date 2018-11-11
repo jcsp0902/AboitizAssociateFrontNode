@@ -10,7 +10,6 @@ export const dataSource = [
     biddingEnd: "March 2, 2018",
     // myRank: '2nd',
     leastBid: 8000,
-    myBid: 9000,
     service: "Installation",
     type: "Service",
     details:[
@@ -22,8 +21,8 @@ export const dataSource = [
     ]
   },
   {
-    id: 1,
-    applicationId: 1,
+    id: 2,
+    applicationId: 2,
     packageName: 'A',
     status: "For Deployment",
     location: "3008 Lapidsville Tambuong, Pampanga, Bulacan",
@@ -33,7 +32,6 @@ export const dataSource = [
     // accomplishDate: "March 2, 1996",
     // myRank: '1st',
     leastBid: 8000,
-    myBid: 9000,
     service: "Installation",
     type: "Service",
     details:[
@@ -44,8 +42,8 @@ export const dataSource = [
       "10 Lamps",
     ]
   },{
-    id: 1,
-    applicationId: 1,
+    id: 3,
+    applicationId: 3,
     packageName: 'A',
     status: "For Deployment",
     location: "3008 Lapidsville Tambuong, Pampanga, Bulacan",
@@ -56,7 +54,6 @@ export const dataSource = [
     biddingEnd: "April 2, 2018",
     // myRank: '3rd',
     leastBid: 8000,
-    myBid: 9000,
     service: "Installation",
     type: "Service",
     details:[
@@ -67,8 +64,8 @@ export const dataSource = [
       "10 Lamps",
     ]
   },{
-    id: 1,
-    applicationId: 1,
+    id: 4,
+    applicationId: 4,
     packageName: 'A',
     status: "For Deployment",
     location: "3008 Lapidsville Tambuong, Pampanga, Bulacan",
@@ -78,7 +75,6 @@ export const dataSource = [
     // accomplishDate: "March 2, 1996",
     // myRank: '6th',
     leastBid: 8000,
-    myBid: 9000,
     service: "Installation",
     type: "Service",
     details:[

@@ -176,6 +176,8 @@
 
 .application-section {
   margin-top: 25px; }
+  .application-section .mybid-section {
+    display: none; }
   .application-section .ant-tabs-bar {
     margin: 0; }
   .application-section .allin {
@@ -397,7 +399,7 @@
   border-radius: 10px;
   max-width: 300px;
   width: 300px;
-  min-height: 300px;
+  min-height: 435px;
   box-shadow: 2px 2px #B9A7A7; }
   .package-card .mybid-section {
     font-weight: bold;
